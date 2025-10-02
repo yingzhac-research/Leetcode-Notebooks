@@ -33,6 +33,7 @@ while left < right:
 **套路解析**：维护动态窗口并利用哈希跟踪窗口属性，超出约束时收缩窗口，保持不变量得到最优或可行解。
 **伪代码模板**:
 ```python
+# 求最大/最长：窗口非法时收缩
 left = 0
 for right, value in enumerate(sequence):
     include(value)
@@ -41,10 +42,22 @@ for right, value in enumerate(sequence):
         left += 1
     update_answer(left, right)
 ```
-适用题目：`LC 76`, `LC 209`, `LC 424`, `LC 904`, `LC 1004`, `LC 1208`
+```python
+# 求最小/最短：窗口满足目标时收缩
+left = 0
+for right, value in enumerate(sequence):
+    include(value)
+    while satisfies_goal():
+        update_answer(left, right)
+        exclude(sequence[left])
+        left += 1
+```
+适用题目：
+- 最长/最大窗口：`LC 424`, `LC 904`, `LC 1004`, `LC 1208`
+- 最短/最小窗口：`LC 76`, `LC 209`
 
 
-- 窗口扩张收缩的核心是不变量：窗口内容必须满足约束，超限时及时收缩。
+- 明确维护的目标：最长场景在违约时收缩窗口；最短场景在满足目标时立刻尝试压缩。
 
 ### 3. 定长窗口 / 频次匹配
 **套路解析**：固定窗口长度，将窗口特征与目标比较，滑动时同步更新新入/移出元素的贡献，常用于排列或频次匹配。

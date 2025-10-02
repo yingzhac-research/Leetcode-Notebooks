@@ -16,7 +16,7 @@
    - 难度等级
    - 推荐优先级（高/中/低，用于复习计划）
 2. **Problem Statement 原题描述 (Markdown)**
-   - 原题完整英文描述，包含输入输出说明与约束。
+   - 原题完整英文描述。
    - 若官方描述不可用，注明数据来源并给出可靠的完整版本。
    - 若题目为 LeetCode Premium，必须补充官方的输入输出示例；非 Premium 题默认不额外列示示例，保持结构简洁。
 3. **Progressive Hints (Markdown)**

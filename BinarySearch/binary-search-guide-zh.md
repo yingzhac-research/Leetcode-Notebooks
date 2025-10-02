@@ -209,7 +209,7 @@ def feasible(limit):
 | `BinarySearch/LC_1552_magnetic-force-between-two-balls.ipynb` | 答案二分 | 检查最小距离可行性 | 提供排序+二分的完整复杂度分析 |
 | `BinarySearch/LC_1870_minimum-speed-to-arrive-on-time.ipynb` | 答案二分 | 计算在速度 mid 下是否按时到达 | 考虑浮点误差与向上取整 |
 | `BinarySearch/LC_744_find-smallest-letter-greater-than-target.ipynb` | upper_bound | 找第一个大于 target 的元素 | 扩展到循环数组的写法 |
-| `BinarySearch/LC_2410_*, etc` | *(可按需扩展)* |  |  |
+| `BinarySearch/LC_2410_maximum-matching-of-players-with-trainers.ipynb` | 二分+贪心 | 排序后二分定位可用训练师 | 结合 lower_bound 与在线匹配思路 |
 
 ## 学习建议
 - **模板背诵**：分别手写“存在性二分”“lower/upper_bound”“答案二分”三个常用模板，熟悉循环条件和返回值处理。
