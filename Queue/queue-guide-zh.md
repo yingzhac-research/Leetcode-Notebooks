@@ -19,10 +19,10 @@
 ## 队列模式与代表题型
 
 ### 1. 层序遍历与树的 BFS
-**适用情形**：需要按层收集树节点信息、构建层序输出或在树上执行分层统计时。
-**套路解读**：用队列顺序处理每一层节点，常搭配层大小计数或层序记录，确保同层节点一起被消费。
+**识别信号**：题目要求按层收集树节点信息、构建层序输出或在树上执行分层统计。
+**套路解析**：用队列顺序处理每一层节点，常搭配层大小计数或层序记录，确保同层节点一起被消费。
 
-**模板精要**：
+**伪代码模板**：
 ```python
 from collections import deque
 
@@ -40,17 +40,17 @@ while queue:
     process(level_vals)
 ```
 
-**经典题目**：
+**适用题目**：
 - `Queue/LC_102_binary-tree-level-order-traversal.ipynb`
 - `Queue/LC_103_binary-tree-zigzag-level-order-traversal.ipynb`
 - `Queue/LC_199_binary-tree-right-side-view.ipynb`
 
 
 ### 2. Flood Fill 与连通块 BFS
-**适用情形**：网格或矩阵上需要统计连通块、扩散标记或模拟区域填充时。
-**套路解读**：从任意陆地/目标格出发，用队列向四邻或八邻扩散，逐一标记同一连通块，避免重复访问。
+**识别信号**：网格或矩阵上需要统计连通块、扩散标记或模拟区域填充。
+**套路解析**：从任意陆地/目标格出发，用队列向四邻或八邻扩散，逐一标记同一连通块，避免重复访问。
 
-**模板精要**：
+**伪代码模板**：
 ```python
 from collections import deque
 
@@ -67,16 +67,16 @@ def flood_fill(grid, start):
                 queue.append((nx, ny))
 ```
 
-**经典题目**：
+**适用题目**：
 - `Queue/LC_200_number-of-islands.ipynb`
 - `Queue/LC_994_rotting-oranges.ipynb`
 
 
 ### 3. 多源 BFS 与距离变换
-**适用情形**：需要同时从多个源点出发，计算到最近源点的距离或最短传播时间时。
-**套路解读**：把所有源点统一压入队列作为第 0 层，逐层松弛邻居距离，实现整体传播的最短路更新。
+**识别信号**：需要同时从多个源点出发，计算到最近源点的距离或最短传播时间。
+**套路解析**：把所有源点统一压入队列作为第 0 层，逐层松弛邻居距离，实现整体传播的最短路更新。
 
-**模板精要**：
+**伪代码模板**：
 ```python
 from collections import deque
 
@@ -94,16 +94,16 @@ while queue:
             queue.append((nx, ny))
 ```
 
-**经典题目**：
+**适用题目**：
 - `Queue/LC_542_01-matrix.ipynb`
 - `Queue/LC_1091_shortest-path-in-binary-matrix.ipynb`
 
 
 ### 4. 图搜索与状态空间最短路
-**适用情形**：在状态空间或图上寻找最少步数达到目标配置、验证可达性或发现最短操作序列时。
-**套路解读**：使用 BFS 在无权图/状态空间中扩展邻居，配合 visited 集合去重，首个到达目标的路径即最短。
+**识别信号**：在状态空间或图上寻找最少步数达到目标配置、验证可达性或发现最短操作序列。
+**套路解析**：使用 BFS 在无权图/状态空间中扩展邻居，配合 visited 集合去重，首个到达目标的路径即最短。
 
-**模板精要**：
+**伪代码模板**：
 ```python
 from collections import deque
 
@@ -121,17 +121,17 @@ def bfs_shortest(start):
     return -1
 ```
 
-**经典题目**：
+**适用题目**：
 - `Queue/LC_433_minimum-genetic-mutation.ipynb`
 - `Queue/LC_752_open-the-lock.ipynb`
 - `Queue/LC_785_is-graph-bipartite.ipynb`
 
 
 ### 5. 拓扑排序（Kahn 算法）
-**适用情形**：处理有向无环图依赖、课程安排或构建执行顺序并检测是否有环时。
-**套路解读**：先统计各节点入度，队列维护入度为 0 的节点，逐步出队并削减邻居入度，构造拓扑序列。
+**识别信号**：处理有向无环图依赖、课程安排或构建执行顺序，需要检测是否有环。
+**套路解析**：先统计各节点入度，队列维护入度为 0 的节点，逐步出队并削减邻居入度，构造拓扑序列。
 
-**模板精要**：
+**伪代码模板**：
 ```python
 from collections import deque, defaultdict
 
@@ -153,16 +153,16 @@ def topo_order(n, edges):
     return order
 ```
 
-**经典题目**：
+**适用题目**：
 - `Queue/LC_207_course-schedule.ipynb`
 - `Queue/LC_210_course-schedule-ii.ipynb`
 
 
 ### 6. 单调队列：滑动窗口统计
-**适用情形**：在固定长度窗口内维护最大值/最小值或检查窗口是否满足约束时。
-**套路解读**：使用双端队列记录可能成为答案的索引，保持单调性并及时剔除过期元素，实现 O(n) 窗口更新。
+**识别信号**：在固定长度窗口内维护最大值/最小值或检查窗口是否满足约束。
+**套路解析**：使用双端队列记录可能成为答案的索引，保持单调性并及时剔除过期元素，实现 O(n) 窗口更新。
 
-**模板精要**：
+**伪代码模板**：
 ```python
 from collections import deque
 
@@ -180,17 +180,17 @@ def window_max(nums, k):
     return result
 ```
 
-**经典题目**：
+**适用题目**：
 - `Queue/LC_239_sliding-window-maximum.ipynb`
 - `Queue/LC_862_shortest-subarray-with-sum-at-least-k.ipynb`
 - `Queue/LC_1438_longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit.ipynb`
 
 
 ### 7. 单调队列：动态规划加速
-**适用情形**：DP 转移仅依赖最近 k 个状态的最大/最小值，希望把 O(nk) 降到 O(n) 时。
-**套路解读**：把 DP 中的候选状态放入双端队列，维护单调性和窗口范围，以常数时间得到最佳转移。
+**识别信号**：DP 转移仅依赖最近 k 个状态的最大/最小值，希望把 O(nk) 降到 O(n)。
+**套路解析**：把 DP 中的候选状态放入双端队列，维护单调性和窗口范围，以常数时间得到最佳转移。
 
-**模板精要**：
+**伪代码模板**：
 ```python
 from collections import deque
 
@@ -208,16 +208,16 @@ def dp_with_deque(nums, k):
     return dp[-1]
 ```
 
-**经典题目**：
+**适用题目**：
 - `Queue/LC_1696_jump-game-vi.ipynb`
 - `Queue/LC_1425_constrained-subsequence-sum.ipynb`
 
 
 ### 8. 队列 & 双端队列设计题
-**适用情形**：题目要求自行实现队列/双端队列接口、控制容量或提供 O(1) 时间复杂度操作时。
-**套路解读**：围绕队列语义构建自定义数据结构，常见做法包括环形数组、双栈倒腾、单队列旋转等。
+**识别信号**：题目要求自行实现队列/双端队列接口、控制容量或提供 O(1) 时间复杂度操作。
+**套路解析**：围绕队列语义构建自定义数据结构，常见做法包括环形数组、双栈倒腾、单队列旋转等。
 
-**模板精要**：
+**伪代码模板**：
 ```python
 from collections import deque
 
@@ -232,7 +232,7 @@ class RecentCounter:
         return len(self.queue)
 ```
 
-**经典题目**：
+**适用题目**：
 - `Queue/LC_225_implement-stack-using-queues.ipynb`
 - `Queue/LC_232_implement-queue-using-stacks.ipynb`
 - `Queue/LC_622_design-circular-queue.ipynb`

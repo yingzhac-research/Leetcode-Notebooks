@@ -19,10 +19,10 @@
 ## 二分模式与代表题型
 
 ### 1. 标准二分查找（存在性判断）
-**适用情形**：在有序数组中判断目标是否出现，或返回其索引。
-**套路解读**：维护 `[left, right]` 区间，中点与目标比较后收缩端点，直到找到或区间为空。
+**识别信号**：在有序数组中查找特定目标值，需要判断是否存在或返回其索引位置。
+**套路解析**：维护 `[left, right]` 区间，中点与目标比较后收缩端点，直到找到或区间为空。
 
-**模板精要**：
+**伪代码模板**：
 ```python
 def binary_search(nums, target):
     left, right = 0, len(nums) - 1
@@ -37,15 +37,15 @@ def binary_search(nums, target):
     return -1
 ```
 
-**经典题目**：
+**适用题目**：
 - `BinarySearch/LC_704_binary-search.ipynb`
 - `BinarySearch/LC_74_search-a-2d-matrix.ipynb`
 
 ### 2. lower_bound / upper_bound 边界查找
-**适用情形**：需要定位目标的最左或最右出现位置，或找到插入点。
-**套路解读**：通过不变量设计，将循环写成 `while left < right`，或在模板中维护答案变量。
+**识别信号**：需要定位目标的最左或最右出现位置、找到插入点或第一个满足条件的元素。
+**套路解析**：通过不变量设计，将循环写成 `while left < right`，或在模板中维护答案变量。
 
-**模板精要**：
+**伪代码模板**：
 ```python
 def lower_bound(nums, target):
     left, right = 0, len(nums)
@@ -58,16 +58,16 @@ def lower_bound(nums, target):
     return left  # 最左插入位置
 ```
 
-**经典题目**：
+**适用题目**：
 - `BinarySearch/LC_34_find-first-and-last-position-of-element-in-sorted-array.ipynb`
 - `BinarySearch/LC_35_search-insert-position.ipynb`
 - `BinarySearch/LC_744_find-smallest-letter-greater-than-target.ipynb`
 
 ### 3. 旋转数组 & 山峰查找
-**适用情形**：数组经过旋转/山峰变换但保持局部单调，需要定位峰值或特定目标。
-**套路解读**：利用 mid 与端点比较判断落在哪个单调区间，或通过相邻元素判断峰值方向。
+**识别信号**：数组经过旋转或呈山峰形状，但保持局部单调性，需要定位峰值、最小值或特定目标。
+**套路解析**：利用 mid 与端点比较判断落在哪个单调区间，或通过相邻元素判断峰值方向。
 
-**模板精要**：
+**伪代码模板**：
 ```python
 def search_rotated(nums, target):
     left, right = 0, len(nums) - 1
@@ -88,7 +88,7 @@ def search_rotated(nums, target):
     return -1
 ```
 
-**经典题目**：
+**适用题目**：
 - `BinarySearch/LC_33_search-in-rotated-sorted-array.ipynb`
 - `BinarySearch/LC_81_search-in-rotated-sorted-array-ii.ipynb`
 - `BinarySearch/LC_153_find-minimum-in-rotated-sorted-array.ipynb`
@@ -96,10 +96,10 @@ def search_rotated(nums, target):
 - `BinarySearch/LC_852_peak-index-in-a-mountain-array.ipynb`
 
 ### 4. 二分答案（整数域）
-**适用情形**：答案本身处于一段区间，且存在“可行性”单调关系，如“最小满足条件的值”。
-**套路解读**：在候选答案区间 `[lo, hi]` 上二分，`check(mid)` 返回是否可行，然后更新区间，最终得到最优答案。
+**识别信号**：题目要求"最小的最大值"或"最大的最小值"，答案在某个范围内且可行性具有单调性。
+**套路解析**：在候选答案区间 `[lo, hi]` 上二分，`check(mid)` 返回是否可行，然后更新区间，最终得到最优答案。
 
-**模板精要**：
+**伪代码模板**：
 ```python
 def binary_search_answer(lo, hi, check):
     while lo < hi:
@@ -111,7 +111,7 @@ def binary_search_answer(lo, hi, check):
     return lo
 ```
 
-**经典题目**：
+**适用题目**：
 - `BinarySearch/LC_875_koko-eating-bananas.ipynb`
 - `BinarySearch/LC_1011_capacity-to-ship-packages-within-d-days.ipynb`
 - `BinarySearch/LC_1482_minimum-number-of-days-to-make-m-bouquets.ipynb`
@@ -119,10 +119,10 @@ def binary_search_answer(lo, hi, check):
 - `BinarySearch/LC_1870_minimum-speed-to-arrive-on-time.ipynb`
 
 ### 5. 二分答案（浮点 / 精度控制）
-**适用情形**：答案为实数，如浮点平方根、几何距离等，需要在误差范围内逼近。
-**套路解读**：使用固定次数迭代或 while 循环结合精度阈值，更新 `mid`。Python 中需注意浮点误差。
+**识别信号**：答案为实数（如平方根、几何距离、平均值），需要在指定精度范围内逼近。
+**套路解析**：使用固定次数迭代或 while 循环结合精度阈值，更新 `mid`。Python 中需注意浮点误差。
 
-**模板精要**：
+**伪代码模板**：
 ```python
 def sqrt_float(x, eps=1e-6):
     left, right = (0.0, max(1.0, x))
@@ -135,15 +135,15 @@ def sqrt_float(x, eps=1e-6):
     return right
 ```
 
-**经典题目**：
+**适用题目**：
 - `BinarySearch/LC_69_sqrtx.ipynb`
 - `BinarySearch/LC_644_maximum-average-subarray-ii.ipynb` *(若有需要可扩展)*
 
 ### 6. 值域二分 + 计数函数
-**适用情形**：通过“统计 ≤ mid 的元素个数”验证某个数是否满足条件，常见于找第 k 小值。
-**套路解读**：`check(mid)` 返回满足条件的数量，根据数量与目标比较收缩区间。
+**识别信号**：题目要求找第 K 小/大值，或通过统计满足条件的元素个数来确定答案。
+**套路解析**：`check(mid)` 返回满足条件的数量，根据数量与目标比较收缩区间。
 
-**模板精要**：
+**伪代码模板**：
 ```python
 def kth_value(lo, hi, count_leq, k):
     while lo < hi:
@@ -155,16 +155,16 @@ def kth_value(lo, hi, count_leq, k):
     return lo
 ```
 
-**经典题目**：
+**适用题目**：
 - `BinarySearch/LC_287_find-the-duplicate-number.ipynb`
 - `BinarySearch/LC_378_kth-smallest-element-in-a-sorted-matrix.ipynb`
 - `BinarySearch/LC_668_kth-smallest-number-in-multiplication-table.ipynb`
 
 ### 7. 二分 + 贪心 / 可行性验证
-**适用情形**：对于一个候选答案，使用贪心/模拟判断是否满足条件（如分配、装载、分割）。
-**套路解读**：结合答案二分的模板，通过贪心 `check(mid)` 判断可行性。常用于“最小最大值”或“最大最小值”问题。
+**识别信号**：题目涉及资源分配、数组分割、装载问题，需要判断某个方案是否可行。
+**套路解析**：结合答案二分的模板，通过贪心 `check(mid)` 判断可行性。常用于"最小最大值"或"最大最小值"问题。
 
-**模板精要**：
+**伪代码模板**：
 ```python
 def feasible(limit):
     groups = 1
@@ -177,16 +177,16 @@ def feasible(limit):
     return groups <= m
 ```
 
-**经典题目**：
+**适用题目**：
 - `BinarySearch/LC_410_split-array-largest-sum.ipynb`
 - `BinarySearch/LC_658_find-k-closest-elements.ipynb`
 - `BinarySearch/LC_1482_minimum-number-of-days-to-make-m-bouquets.ipynb`
 
 ### 8. 二分结合其他数据结构
-**适用情形**：二分决定某个索引/值后，再借助其他数据结构查询（如前缀和、双指针）。
-**套路解读**：先定位索引，再配合队列/栈/哈希等结构优化求解。
+**识别信号**：二分查找需要与前缀和、双指针、哈希表等数据结构配合使用。
+**套路解析**：先定位索引，再配合队列/栈/哈希等结构优化求解。
 
-**经典题目**：
+**适用题目**：
 - `BinarySearch/LC_240_search-a-2d-matrix-ii.ipynb`
 - `BinarySearch/LC_658_find-k-closest-elements.ipynb`
 
